@@ -1,15 +1,14 @@
+// import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
 import { Provider } from "@/components/ui/provider"
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(props: { children: React.ReactNode }) {
+  const { children } = props
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <body>
         <Provider>{children}</Provider>
       </body>
     </html>
-  );
+  )
 }
+

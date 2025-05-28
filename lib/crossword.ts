@@ -2,7 +2,6 @@ import csv from 'csv-parser'
 import path from "path"
 import { createReadStream } from 'fs'
 import { ICrossword } from "@/lib/crossword.interface"
-import { notFound } from 'next/navigation'
 
 const re = new RegExp(/.*?(\d+).*?:(.*?)\((.*)\)/);
 
@@ -39,7 +38,7 @@ export async function getCrossword(dayNo: number | string): Promise<ICrossword> 
         if (d.dayNo.toString() === dayNo.toString())
           resolve(d)
       })
-      .on('end', () => reject(notFound()))
+      .on('end', () => reject())
       .on('error', (error) => reject(error));
   });
 }

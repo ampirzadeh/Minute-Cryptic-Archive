@@ -5,6 +5,7 @@ import { Alert, For, PinInput, usePinInput, VStack } from "@chakra-ui/react"
 import YoutubeVideo from "./YoutubeVideo"
 
 export default function MultiWordInput({ crossword, correctAnswer }: { crossword: ICrossword, correctAnswer: string }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const stores = crossword.ansLen.map(() => usePinInput({ type: "alphanumeric" }))
 
   const AnswerResult = () => {
@@ -19,13 +20,13 @@ export default function MultiWordInput({ crossword, correctAnswer }: { crossword
           <Alert.Indicator />
           <Alert.Content>
 
-            <Alert.Title>I don't know!</Alert.Title>
+            <Alert.Title>{"I don't know!"}</Alert.Title>
             <Alert.Description>
               <p>
-                We currently don't know the correct answer to this one.
+                {"We currently don't know the correct answer to this one."}
               </p>
               <p>
-                You can check your answer manually.
+                {"You can check your answer manually."}
               </p>
               <YoutubeVideo videoId={crossword.videoId} />
             </Alert.Description>
@@ -39,14 +40,14 @@ export default function MultiWordInput({ crossword, correctAnswer }: { crossword
       return (
         <Alert.Root size={"lg"} status={"success"} >
           <Alert.Indicator />
-          <Alert.Title>YES!</Alert.Title>
+          <Alert.Title>{"YES!"}</Alert.Title>
         </Alert.Root>
       )
     else
       return (
         <Alert.Root size={"lg"} status={"error"} >
           <Alert.Indicator />
-          <Alert.Title>No!</Alert.Title>
+          <Alert.Title>{"No!"}</Alert.Title>
         </Alert.Root>
       )
   }
